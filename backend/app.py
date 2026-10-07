@@ -40,7 +40,7 @@ PREDICTION_HISTORY: deque[dict[str, Any]] = deque(maxlen=500)
 
 # CyberSentinel backend URL for forwarding incoming requests for analysis
 CYBERSENTINEL_API_URL = os.getenv(
-    "CYBERSENTINEL_API_URL", "http://127.0.0.1:8000/api/traffic-events"
+    "CYBERSENTINEL_API_URL", "https://cybersentinel-backend-6zr9.onrender.com/api/traffic-events"
 ).strip()
 
 # ---------------------------------------------------------------------------
@@ -381,4 +381,5 @@ if FRONTEND_DIR.exists():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run("app:app", host="0.0.0.0", port=port, reload=False)
