@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NovaTech Solutions — Enterprise Software & Cloud Services</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a class="nav-brand" href="#home" data-page="home">
+        <div class="logo-mark">NT</div>
+        <span class="brand-name">NovaTech<span class="accent">Solutions</span></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"     data-page="home"     class="nav-link active">Home</a></li>
+        <li><a href="#about"    data-page="about"    class="nav-link">About</a></li>
+        <li><a href="#products" data-page="products" class="nav-link">Products</a></li>
+        <li><a href="#contact"  data-page="contact"  class="nav-link">Contact</a></li>
+        <li><a href="#login"    data-page="login"    class="nav-link nav-cta">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== PAGES (SPA shells) ========== -->
+
+  <!-- HOME PAGE -->
+  <main class="page active" id="page-home">
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <div class="hero-badge">🚀 Trusted by 2,400+ companies worldwide</div>
+        <h1 class="hero-title">
+          Enterprise Software<br/>
+          <span class="gradient-text">Reinvented for Scale</span>
+        </h1>
+        <p class="hero-subtitle">
+          NovaTech Solutions delivers cloud-native ERP, CRM, and analytics platforms
+          that help mid-size to enterprise companies operate faster, smarter, and
+          more securely — without the complexity.
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="navigateTo('products')">Explore Products</button>
+          <button class="btn btn-outline" onclick="navigateTo('contact')">Talk to Sales</button>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">99.9%</span><span class="stat-label">Uptime SLA</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">2.4k+</span><span class="stat-label">Businesses</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">38</span><span class="stat-label">Countries</span></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="dashboard-mockup">
+          <div class="mockup-header">
+            <div class="mockup-dot red"></div>
+            <div class="mockup-dot yellow"></div>
+            <div class="mockup-dot green"></div>
+            <span class="mockup-title">NovaTech Dashboard</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-sidebar">
+              <div class="sidebar-item active-s">📊 Overview</div>
+              <div class="sidebar-item">📦 Orders</div>
+              <div class="sidebar-item">👥 Customers</div>
+              <div class="sidebar-item">📈 Analytics</div>
+              <div class="sidebar-item">⚙️ Settings</div>
+            </div>
+            <div class="mockup-main">
+              <div class="kpi-row">
+                <div class="kpi-card"><div class="kpi-label">Revenue</div><div class="kpi-val">$1.24M</div><div class="kpi-delta up">↑ 12.4%</div></div>
+                <div class="kpi-card"><div class="kpi-label">Users</div><div class="kpi-val">8,431</div><div class="kpi-delta up">↑ 5.1%</div></div>
+                <div class="kpi-card"><div class="kpi-label">Tickets</div><div class="kpi-val">142</div><div class="kpi-delta down">↓ 3.2%</div></div>
+              </div>
+              <div class="chart-placeholder">
+                <div class="chart-bar" style="height:55%"></div>
+                <div class="chart-bar" style="height:70%"></div>
+                <div class="chart-bar" style="height:45%"></div>
+                <div class="chart-bar" style="height:90%"></div>
+                <div class="chart-bar" style="height:60%"></div>
+                <div class="chart-bar" style="height:80%"></div>
+                <div class="chart-bar" style="height:65%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trusted Logos -->
+    <section class="logos-section">
+      <p class="logos-label">Trusted by industry leaders</p>
+      <div class="logos-row">
+        <div class="logo-chip">Meridian Corp</div>
+        <div class="logo-chip">Axiom Health</div>
+        <div class="logo-chip">Pinnacle Group</div>
+        <div class="logo-chip">Cascade Energy</div>
+        <div class="logo-chip">Stratos Logistics</div>
+        <div class="logo-chip">BrightCore Labs</div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+      <div class="section-header">
+        <div class="section-tag">Why NovaTech</div>
+        <h2 class="section-title">Everything your business needs <br/>in one platform</h2>
+        <p class="section-sub">Stop juggling a dozen disconnected tools. NovaTech integrates operations, customer data, analytics, and automation in a single, intuitive workspace.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feat-icon">☁️</div>
+          <h3>Cloud-Native Architecture</h3>
+          <p>Built on AWS and GCP with auto-scaling, zero-downtime deployments, and 99.9% uptime guaranteed by SLA.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">🔒</div>
+          <h3>Enterprise Security</h3>
+          <p>SOC 2 Type II certified. End-to-end encryption, SSO, MFA, role-based access control, and audit logs baked in.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">⚡</div>
+          <h3>Real-Time Analytics</h3>
+          <p>Dashboards refresh in milliseconds. Slice your data across 200+ built-in dimensions or build custom reports.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">🔗</div>
+          <h3>600+ Integrations</h3>
+          <p>Connect Salesforce, SAP, Stripe, Slack, HubSpot and hundreds more via our open REST and webhook APIs.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">🤖</div>
+          <h3>AI-Powered Workflows</h3>
+          <p>Automate repetitive tasks, predict inventory needs, and surface anomalies — all powered by built-in ML models.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feat-icon">🌍</div>
+          <h3>Global Compliance</h3>
+          <p>GDPR, HIPAA, ISO 27001, and CCPA compliant out of the box. Data residency options in 12 regions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+      <div class="section-header">
+        <div class="section-tag">Customer Stories</div>
+        <h2 class="section-title">Businesses that trust NovaTech</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"We replaced three legacy systems with NovaTech ERP and cut our monthly operational costs by 40%. The migration was painless and the support team was exceptional."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SR</div>
+            <div><strong>Sarah Richardson</strong><br/><small>COO, Pinnacle Group</small></div>
+          </div>
+        </div>
+        <div class="testimonial-card featured-t">
+          <div class="stars">★★★★★</div>
+          <p>"NovaTech's analytics platform gave our sales team insights they never had before. Pipeline visibility improved by 60% within the first quarter of deployment."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MK</div>
+            <div><strong>Marcus Kim</strong><br/><small>VP Sales, Axiom Health</small></div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <p>"Security was our biggest concern moving to cloud ERP. NovaTech's SOC 2 certification and built-in HIPAA compliance made the decision straightforward for us."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">JL</div>
+            <div><strong>Jessica Lowe</strong><br/><small>CTO, BrightCore Labs</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to modernise your operations?</h2>
+        <p>Start a free 14-day trial. No credit card required. Dedicated onboarding support included.</p>
+        <div class="cta-actions">
+          <button class="btn btn-white" onclick="navigateTo('products')">Start Free Trial</button>
+          <button class="btn btn-outline-white" onclick="navigateTo('contact')">Schedule a Demo</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Live Security Monitoring (CyberSentinel ML) -->
+    <section class="security-monitoring">
+      <div class="sec-mon-header">
+        <div class="sec-mon-title">
+          <div class="live-dot"></div>
+          <h2>Live Security Monitor</h2>
+        </div>
+        <p>Real-time machine learning traffic analysis powered by CyberSentinel AI</p>
+      </div>
+      <div class="sec-mon-body">
+        <table class="sec-table" id="predictionsTable">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Dest Port</th>
+              <th>Bytes (Fwd/Bwd)</th>
+              <th>Flow Duration</th>
+              <th>Prediction</th>
+              <th>Risk Level</th>
+            </tr>
+          </thead>
+          <tbody id="predictionsTbody">
+            <tr class="empty-row"><td colspan="6">Waiting for live traffic...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main><!-- /page-home -->
+
+  <!-- ABOUT PAGE -->
+  <main class="page" id="page-about">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <div class="section-tag">Our Story</div>
+        <h1>We Build Software<br/>That Actually Works</h1>
+        <p>Founded in 2011, NovaTech Solutions started with a simple belief: enterprise software doesn't have to be painful to use. Today we serve thousands of businesses across 38 countries.</p>
+      </div>
+    </section>
+
+    <section class="about-mission">
+      <div class="two-col">
+        <div class="col-text">
+          <h2>Our Mission</h2>
+          <p>To remove the friction between great ideas and great execution. We build tools that help operators, managers, and executives make better decisions — faster — without requiring an army of consultants to get value out of them.</p>
+          <p>Every feature we ship is tested against a simple question: <em>"Does this make our customers' lives genuinely easier?"</em> If the answer isn't obviously yes, it doesn't ship.</p>
+        </div>
+        <div class="col-cards">
+          <div class="val-card"><span>2011</span><p>Year Founded</p></div>
+          <div class="val-card"><span>340+</span><p>Team Members</p></div>
+          <div class="val-card"><span>$82M</span><p>Series C Raised</p></div>
+          <div class="val-card"><span>4.8★</span><p>G2 Rating</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <div class="section-header">
+        <div class="section-tag">Leadership</div>
+        <h2 class="section-title">Meet the Team</h2>
+        <p class="section-sub">Experienced operators who have been in your shoes — building, scaling, and running businesses.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar">AH</div>
+          <h3>Alicia Harper</h3>
+          <p class="team-role">CEO & Co-Founder</p>
+          <p class="team-bio">Former VP of Product at Oracle. 20+ years in enterprise software. Led NovaTech from seed to Series C.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">DM</div>
+          <h3>David Morales</h3>
+          <p class="team-role">CTO & Co-Founder</p>
+          <p class="team-bio">Ex-Google SRE. Architected systems handling 10B+ requests/day. Obsessed with reliability and performance.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">PW</div>
+          <h3>Priya Wolfe</h3>
+          <p class="team-role">Chief Product Officer</p>
+          <p class="team-bio">Previously at Salesforce and HubSpot. Specialises in product-led growth and enterprise UX design.</p>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar">TC</div>
+          <h3>Thomas Chen</h3>
+          <p class="team-role">Chief Revenue Officer</p>
+          <p class="team-bio">Scaled enterprise sales teams from 5 to 80+ reps at two unicorn SaaS companies before joining NovaTech.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="values-section">
+      <div class="section-header">
+        <div class="section-tag">Culture</div>
+        <h2 class="section-title">What We Stand For</h2>
+      </div>
+      <div class="values-grid">
+        <div class="value-item"><div class="value-icon">🎯</div><h4>Customer First</h4><p>Every decision starts with "how does this help the customer?" Not "how does this help us?"</p></div>
+        <div class="value-item"><div class="value-icon">🔍</div><h4>Radical Transparency</h4><p>We share our metrics, our mistakes, and our roadmap openly — with our team and our customers.</p></div>
+        <div class="value-item"><div class="value-icon">🏗️</div><h4>Build to Last</h4><p>We write code we're proud of and documentation that actually helps. Short-cuts cost more later.</p></div>
+        <div class="value-item"><div class="value-icon">🌱</div><h4>Grow Together</h4><p>Our success is measured by how much our customers grow. That keeps our incentives aligned.</p></div>
+      </div>
+    </section>
+  </main><!-- /page-about -->
+
+  <!-- PRODUCTS PAGE -->
+  <main class="page" id="page-products">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <div class="section-tag">Our Products</div>
+        <h1>A Platform Built<br/>for Every Team</h1>
+        <p>From solo operators to 10,000-person enterprises, NovaTech's modular suite grows with you. Start with one product, add more as you scale.</p>
+      </div>
+    </section>
+
+    <section class="products-list">
+
+      <div class="product-block">
+        <div class="product-info">
+          <div class="product-badge">ERP</div>
+          <h2>NovaTech ERP</h2>
+          <p class="product-tagline">Your entire business in one system.</p>
+          <p>Manage finance, HR, procurement, inventory, and supply chain from a single source of truth. Real-time financial close, multi-entity consolidation, and full audit trails included.</p>
+          <ul class="product-features">
+            <li>✓ Multi-currency & multi-entity</li>
+            <li>✓ Automated AP/AR workflows</li>
+            <li>✓ Payroll & benefits management</li>
+            <li>✓ SOX & IFRS compliant reporting</li>
+          </ul>
+          <div class="pricing-block">
+            <span class="price">From <strong>$299</strong>/mo</span>
+            <button class="btn btn-primary">Start Free Trial</button>
+          </div>
+        </div>
+        <div class="product-visual erp-visual">
+          <div class="mini-ui">
+            <div class="mini-row"><span class="tag finance">Finance</span> Q3 Close <span class="status green">✓ Complete</span></div>
+            <div class="mini-row"><span class="tag hr">HR</span> Payroll Run <span class="status green">✓ Processed</span></div>
+            <div class="mini-row"><span class="tag proc">Procurement</span> PO #4820 <span class="status yellow">⏳ Pending</span></div>
+            <div class="mini-row"><span class="tag inv">Inventory</span> SKU-0042 <span class="status red">⚠ Low Stock</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-block reverse">
+        <div class="product-info">
+          <div class="product-badge crm">CRM</div>
+          <h2>NovaTech CRM</h2>
+          <p class="product-tagline">Close more deals. Retain more customers.</p>
+          <p>A modern CRM built for B2B sales teams. Pipeline management, email sequencing, contact enrichment, and revenue forecasting — all in one place with native mobile apps.</p>
+          <ul class="product-features">
+            <li>✓ Visual sales pipeline</li>
+            <li>✓ AI-powered lead scoring</li>
+            <li>✓ Email & call logging</li>
+            <li>✓ Revenue forecasting</li>
+          </ul>
+          <div class="pricing-block">
+            <span class="price">From <strong>$49</strong>/user/mo</span>
+            <button class="btn btn-primary">Start Free Trial</button>
+          </div>
+        </div>
+        <div class="product-visual crm-visual">
+          <div class="pipeline-mini">
+            <div class="stage"><div class="stage-label">Lead</div><div class="deal-card">Acme Corp — $12k</div><div class="deal-card">TechBase — $8k</div></div>
+            <div class="stage"><div class="stage-label">Qualified</div><div class="deal-card">Stratos — $45k</div></div>
+            <div class="stage"><div class="stage-label">Proposal</div><div class="deal-card">Meridian — $120k</div><div class="deal-card">Nexus — $30k</div></div>
+            <div class="stage"><div class="stage-label">Won ✓</div><div class="deal-card won">Apex — $200k</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-block">
+        <div class="product-info">
+          <div class="product-badge analytics">Analytics</div>
+          <h2>NovaTech Analytics</h2>
+          <p class="product-tagline">Turn data into decisions — in seconds.</p>
+          <p>Connect any data source and build beautiful, interactive dashboards in minutes. Scheduled reports, anomaly alerts, and AI-generated summaries keep your team ahead of the numbers.</p>
+          <ul class="product-features">
+            <li>✓ 150+ native connectors</li>
+            <li>✓ Drag-and-drop report builder</li>
+            <li>✓ AI narrative summaries</li>
+            <li>✓ Scheduled email reports</li>
+          </ul>
+          <div class="pricing-block">
+            <span class="price">From <strong>$199</strong>/mo</span>
+            <button class="btn btn-primary">Start Free Trial</button>
+          </div>
+        </div>
+        <div class="product-visual analytics-visual">
+          <div class="analytics-bars">
+            <div class="a-bar" style="height:60%"><span>Jan</span></div>
+            <div class="a-bar" style="height:75%"><span>Feb</span></div>
+            <div class="a-bar" style="height:55%"><span>Mar</span></div>
+            <div class="a-bar" style="height:88%"><span>Apr</span></div>
+            <div class="a-bar" style="height:70%"><span>May</span></div>
+            <div class="a-bar" style="height:95%"><span>Jun</span></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Pricing Summary -->
+    <section class="pricing-section">
+      <div class="section-header">
+        <div class="section-tag">Pricing</div>
+        <h2 class="section-title">Simple, transparent pricing</h2>
+        <p class="section-sub">No hidden fees. No surprise add-ons. Scale up or down any time.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Starter</h3>
+          <div class="price-tag">$49<span>/mo</span></div>
+          <p>Perfect for small teams getting started.</p>
+          <ul><li>Up to 5 users</li><li>CRM access</li><li>Basic analytics</li><li>Email support</li></ul>
+          <button class="btn btn-outline full-w">Get Started</button>
+        </div>
+        <div class="pricing-card popular">
+          <div class="popular-badge">Most Popular</div>
+          <h3>Growth</h3>
+          <div class="price-tag">$249<span>/mo</span></div>
+          <p>For scaling businesses that need more power.</p>
+          <ul><li>Up to 25 users</li><li>CRM + ERP modules</li><li>Advanced analytics</li><li>Priority support</li><li>API access</li></ul>
+          <button class="btn btn-primary full-w">Get Started</button>
+        </div>
+        <div class="pricing-card">
+          <h3>Enterprise</h3>
+          <div class="price-tag">Custom</div>
+          <p>For large organisations with complex needs.</p>
+          <ul><li>Unlimited users</li><li>Full platform access</li><li>Custom integrations</li><li>Dedicated CSM</li><li>SLA guarantee</li></ul>
+          <button class="btn btn-outline full-w" onclick="navigateTo('contact')">Contact Sales</button>
+        </div>
+      </div>
+    </section>
+  </main><!-- /page-products -->
+
+  <!-- LOGIN PAGE -->
+  <main class="page" id="page-login">
+    <section class="login-section">
+      <div class="login-card">
+        <div class="login-brand">
+          <div class="logo-mark small">NT</div>
+          <span class="brand-name">NovaTech<span class="accent">Solutions</span></span>
+        </div>
+        <h2>Welcome back</h2>
+        <p class="login-sub">Sign in to your NovaTech workspace</p>
+        <form class="login-form" id="loginForm" onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="loginEmail">Work Email</label>
+            <input type="email" id="loginEmail" name="email" placeholder="you@company.com" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-wrap">
+              <input type="password" id="loginPassword" name="password" placeholder="••••••••" required autocomplete="current-password" />
+              <button type="button" class="toggle-pw" onclick="togglePassword()">Show</button>
+            </div>
+          </div>
+          <div class="form-row-split">
+            <label class="checkbox-label">
+              <input type="checkbox" name="remember" /> Remember me
+            </label>
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary full-w" id="loginBtn">Sign In</button>
+        </form>
+        <p class="login-footer">Don't have an account? <a href="#" onclick="navigateTo('contact')">Contact sales</a></p>
+        <div class="login-divider"><span>Or continue with</span></div>
+        <div class="sso-buttons">
+          <button class="sso-btn">🔷 Microsoft SSO</button>
+          <button class="sso-btn">🔵 Google Workspace</button>
+        </div>
+        <div id="loginMessage" class="login-message hidden"></div>
+      </div>
+      <div class="login-side">
+        <div class="login-side-content">
+          <div class="quote-mark">"</div>
+          <p class="login-quote">NovaTech completely transformed how our finance team operates. We close the books in 2 days now — it used to take 3 weeks.</p>
+          <div class="quote-author">
+            <div class="author-avatar small">RL</div>
+            <div><strong>Rachel Lee</strong><br/><small>CFO, Cascade Energy</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- /page-login -->
+
+  <!-- CONTACT PAGE -->
+  <main class="page" id="page-contact">
+    <section class="page-hero">
+      <div class="page-hero-content">
+        <div class="section-tag">Get in Touch</div>
+        <h1>We'd Love to Hear<br/>From You</h1>
+        <p>Whether you have a question, need a demo, or are ready to buy — our team typically responds within one business day.</p>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="contact-grid">
+
+        <div class="contact-form-col">
+          <h2>Send us a message</h2>
+          <form class="contact-form" id="contactForm" onsubmit="handleContact(event)">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="firstName" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="lastName" placeholder="Smith" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Work Email</label>
+              <input type="email" name="email" placeholder="jane@company.com" required />
+            </div>
+            <div class="form-group">
+              <label>Company</label>
+              <input type="text" name="company" placeholder="Acme Corp" required />
+            </div>
+            <div class="form-group">
+              <label>Team Size</label>
+              <select name="size">
+                <option value="">Select team size</option>
+                <option>1–10</option>
+                <option>11–50</option>
+                <option>51–200</option>
+                <option>201–1000</option>
+                <option>1000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>How can we help?</label>
+              <textarea name="message" rows="5" placeholder="Tell us about your use case or the challenge you're trying to solve..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary full-w" id="contactBtn">Send Message</button>
+          </form>
+          <div id="contactMessage" class="login-message hidden"></div>
+        </div>
+
+        <div class="contact-info-col">
+          <h2>Our offices</h2>
+          <div class="office-card">
+            <div class="office-city">🇺🇸 San Francisco (HQ)</div>
+            <p>580 Market Street, Suite 300<br/>San Francisco, CA 94104</p>
+            <p><a href="mailto:hello@novatech.io">hello@novatech.io</a></p>
+            <p>+1 (415) 820-4900</p>
+          </div>
+          <div class="office-card">
+            <div class="office-city">🇬🇧 London</div>
+            <p>12 Finsbury Square<br/>London, EC2A 1AR</p>
+            <p><a href="mailto:emea@novatech.io">emea@novatech.io</a></p>
+            <p>+44 20 7946 0320</p>
+          </div>
+          <div class="office-card">
+            <div class="office-city">🇸🇬 Singapore</div>
+            <p>1 Raffles Place, #40-02<br/>Singapore 048616</p>
+            <p><a href="mailto:apac@novatech.io">apac@novatech.io</a></p>
+            <p>+65 6212 5588</p>
+          </div>
+          <div class="support-box">
+            <h4>🛟 Support Portal</h4>
+            <p>Existing customers can open tickets, browse documentation, and access live chat 24/7 through the support portal.</p>
+            <a href="#" class="btn btn-outline small">Open Support Portal</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main><!-- /page-contact -->
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand">
+          <div class="logo-mark small">NT</div>
+          <span class="brand-name">NovaTech<span class="accent">Solutions</span></span>
+        </div>
+        <p>Enterprise software that scales with your ambitions. Built by operators, for operators.</p>
+        <div class="social-links">
+          <a href="#" class="social">in</a>
+          <a href="#" class="social">𝕏</a>
+          <a href="#" class="social">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="#" onclick="navigateTo('products')">NovaTech ERP</a>
+        <a href="#" onclick="navigateTo('products')">NovaTech CRM</a>
+        <a href="#" onclick="navigateTo('products')">Analytics</a>
+        <a href="#" onclick="navigateTo('products')">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#" onclick="navigateTo('about')">About</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#" onclick="navigateTo('contact')">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Documentation</a>
+        <a href="#">API Reference</a>
+        <a href="#">Status Page</a>
+        <a href="#">Security</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 NovaTech Solutions Inc. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
