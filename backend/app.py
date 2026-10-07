@@ -5,10 +5,16 @@ Purpose  : Serve the frontend and log all incoming HTTP requests.
 Future   : Traffic-capture middleware and ML integration will plug in here.
 """
 
+import asyncio
+import json
+import logging
 import math
+import os
 import pickle
 import queue
 import time
+import urllib.parse
+import urllib.request
 import uuid
 from collections import deque
 from datetime import datetime, timezone
@@ -24,11 +30,18 @@ from fastapi.staticfiles import StaticFiles
 # Configuration
 # ---------------------------------------------------------------------------
 
+logger = logging.getLogger("novatech")
+
 FRONTEND_DIR = Path(__file__).parent.parent / "frontend"
 MAX_LOG_ENTRIES = 500          # Keep the last N entries in memory
 LOG_STORE: deque[dict[str, Any]] = deque(maxlen=MAX_LOG_ENTRIES)
 FLOW_STORE: queue.Queue = queue.Queue(maxsize=2000)
 PREDICTION_HISTORY: deque[dict[str, Any]] = deque(maxlen=500)
+
+# CyberSentinel backend URL for forwarding incoming requests for analysis
+CYBERSENTINEL_API_URL = os.getenv(
+    "CYBERSENTINEL_API_URL", "http://127.0.0.1:8000/api/traffic-events"
+).strip()
 
 # ---------------------------------------------------------------------------
 # Load feature columns (the 78 CIC-IDS2017 feature names from the trained model)
@@ -80,6 +93,59 @@ app.add_middleware(
 )
 
 # ---------------------------------------------------------------------------
+# Forward incoming requests to deployed CyberSentinel backend
+# ---------------------------------------------------------------------------
+
+async def forward_to_cybersentinel(entry: dict[str, Any]) -> None:
+    """
+    Asynchronously forwards incoming request metadata to the deployed CyberSentinel
+    backend without blocking NovaTech's HTTP response.
+    """
+    target = os.getenv("CYBERSENTINEL_API_URL", CYBERSENTINEL_API_URL).strip()
+    if not target:
+        return
+
+    url = target.rstrip("/")
+    parsed = urllib.parse.urlparse(url)
+    if not parsed.path or parsed.path == "/":
+        url = f"{url}/api/traffic-events"
+    elif parsed.path.endswith("/api/ingest-flow"):
+        url = url[:-len("/api/ingest-flow")] + "/api/traffic-events"
+
+    # Forward authentic HTTP request metadata only — no fabricated CIC-IDS2017 features
+    payload = {
+        "id": entry["id"],
+        "timestamp": entry["timestamp"],
+        "method": entry["method"],
+        "path": entry["path"],
+        "query": entry["query"],
+        "client_ip": entry["client_ip"],
+        "user_agent": entry["user_agent"],
+        "status_code": entry["status_code"],
+        "response_time_ms": entry["response_time_ms"],
+    }
+
+    def _post():
+        data = json.dumps(payload).encode("utf-8")
+        req = urllib.request.Request(
+            url,
+            data=data,
+            headers={
+                "Content-Type": "application/json",
+                "User-Agent": "NovaTech-Forwarder/1.0",
+                "X-Forwarded-From": "NovaTech-Test-Website",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=5.0) as resp:
+            return resp.status
+
+    try:
+        await asyncio.to_thread(_post)
+    except Exception as exc:
+        logger.debug(f"[forwarder] Forwarding to CyberSentinel ({url}) failed: {exc}")
+
+# ---------------------------------------------------------------------------
 # Request-logging middleware
 # ---------------------------------------------------------------------------
 
@@ -117,6 +183,9 @@ async def log_requests(request: Request, call_next):
 
     LOG_STORE.append(entry)
 
+    # Forward to CyberSentinel backend asynchronously if configured
+    asyncio.create_task(forward_to_cybersentinel(entry))
+
     # Add a custom response header so CyberSentinel can trace the log entry
     response.headers["X-Log-ID"] = entry["id"]
     response.headers["X-Response-Time"] = f"{elapsed_ms}ms"
@@ -136,6 +205,7 @@ async def health_check():
         "service": "CyberSentinel Test Website",
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "log_entries_stored": len(LOG_STORE),
+        "cybersentinel_forwarding_configured": bool(os.getenv("CYBERSENTINEL_API_URL", CYBERSENTINEL_API_URL)),
     }
 
 
