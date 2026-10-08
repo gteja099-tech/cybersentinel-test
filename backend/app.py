@@ -40,7 +40,7 @@ PREDICTION_HISTORY: deque[dict[str, Any]] = deque(maxlen=500)
 
 # CyberSentinel backend URL for forwarding incoming requests for analysis
 CYBERSENTINEL_API_URL = os.getenv(
-    "CYBERSENTINEL_API_URL", "https://cybersentinel-backend-6zr9.onrender.com/api/traffic-events"
+    "CYBERSENTINEL_API_URL", "http://127.0.0.1:8000/api/traffic-events"
 ).strip()
 
 # ---------------------------------------------------------------------------
