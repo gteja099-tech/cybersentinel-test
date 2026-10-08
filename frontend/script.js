@@ -10,9 +10,17 @@
 // ---------------------------------------------------------------
 
 const PAGES = ['home', 'about', 'products', 'login', 'contact'];
+const PAGE_PATHS = {
+  home: '/',
+  about: '/about',
+  products: '/products',
+  login: '/login',
+  contact: '/contact',
+};
 
 /**
  * Switch the visible page and update nav active state.
+ * Generates an actual HTTP request to the NovaTech backend with the destination path.
  * @param {string} pageId - one of PAGES
  */
 function navigateTo(pageId) {
@@ -20,6 +28,16 @@ function navigateTo(pageId) {
     console.warn(`[NovaTech] Unknown page: ${pageId}`);
     return;
   }
+
+  // Generate real request to NovaTech backend with the actual destination path (e.g. /, /about, /products, etc.)
+  const targetPath = PAGE_PATHS[pageId] || (pageId === 'home' ? '/' : `/${pageId}`);
+  fetch(targetPath, {
+    method: 'GET',
+    headers: { 'X-Requested-With': 'NovaTech-Nav' },
+    cache: 'no-cache',
+  }).catch(err => {
+    console.debug('[NovaTech] Navigation request:', err);
+  });
 
   // Update page visibility
   document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
@@ -90,6 +108,13 @@ document.querySelectorAll('.nav-link').forEach(link => {
     e.preventDefault();
     const page = this.dataset.page;
     if (page) navigateTo(page);
+  });
+});
+
+document.querySelectorAll('.nav-brand').forEach(brand => {
+  brand.addEventListener('click', function (e) {
+    e.preventDefault();
+    navigateTo('home');
   });
 });
 
