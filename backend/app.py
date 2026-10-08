@@ -81,7 +81,7 @@ app = FastAPI(
         "A realistic small-business website used as the protected/test target "
         "for the CyberSentinel AI intrusion-detection project."
     ),
-    version="1.0.0",
+    version="1.0.1",
 )
 
 # Allow the React/Vue dev-server during local development if needed later
